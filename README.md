@@ -112,28 +112,14 @@ if (result.status === 'blocked') {
 ## Current Statistics
 
 **Last Scan:** 2026-02-10
-**Scan Dates:** 2026-02-08 (initial), 2026-02-09 (update)
 
 | Metric | Count |
 |--------|-------|
 | Total Blocked Skills | 97 |
-| Total Suspicious Skills | 154 |
 | Confirmed Malicious | 31 |
 | Critical Risk (51+) | 66 |
-| Skills Scanned | 2,465 |
-
-### Recent Updates
-
-**2026-02-10 Update:**
-- Added two-tier protection system: BLOCKED (97) vs SUSPICIOUS (154)
-- BLOCKED skills prevent installation (MALICIOUS or CRITICAL severity)
-- SUSPICIOUS skills warn users before installation (score 40-50)
-
-**2026-02-09 Update:**
-- Scanned 60 additional skills from the repository
-- Added 1 new critical-risk skill: **nancyuahon** (score: 55)
-- Updated total from 2,405 to 2,465 scanned skills
-- All 31 malicious actors remain flagged (no new malicious skills found)
+| Total Suspicious Skills | 154 |
+| Skills Scanned | 2,770 |
 
 ## Severity Levels
 
