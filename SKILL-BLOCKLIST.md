@@ -14,8 +14,8 @@
 This blocklist provides two-tier protection for AI agent ecosystems:
 
 **Protection Levels:**
-- **BLOCKED (Hard Block):** Skills with MALICIOUS or CRITICAL severity (score 51+) - Installation prevented
-- **SUSPICIOUS (Warning):** Skills with moderate risk (score 40-50) - User warning required before installation
+- **BLOCKED (Hard Block):** Skills with MALICIOUS or CRITICAL severity (score 51+/67) - Installation prevented
+- **SUSPICIOUS (Warning):** Skills with moderate risk (score 40-50/67) - User warning required before installation
 
 **Integration:** AI agents should check BOTH skill name AND severity level:
 1. If severity is MALICIOUS or CRITICAL → BLOCK installation (no override)
@@ -39,7 +39,7 @@ This blocklist provides two-tier protection for AI agent ecosystems:
 | brunkstr | 1.0.1 | 62 | CRITICAL | Downloads and compiles code from external GitHub repository (https://github.com/ | 2026-02-08 |
 | cryptotooldev | 1.0.0 | 62 | CRITICAL | Skills instruct users to clone and execute code from an external, unverified Git | 2026-02-08 |
 | devbd1 | 1.0.0 | 62 | MALICIOUS | Both skills require mandatory installation of 'openclaw-agent' utility from exte | 2026-02-08 |
-| divide-by-0 | 1.0.0 | 62 | CRITICAL | Remote code execution via piped curl commands (curl | sh pattern) downloading an | 2026-02-08 |
+| divide-by-0 \\| 1.0.0 | 62 | CRITICAL | Remote code execution via piped curl commands (curl | sh pattern) downloading an | 2026-02-08 |
 | doanbactam | 1.0.0 | 62 | CRITICAL | The openclaw-anything skill is a wrapper that delegates ALL commands to an exter | 2026-02-08 |
 | jordanprater | 1.0.1 | 62 | MALICIOUS | CRITICAL: Multiple skills (polymarketcli, twittertrends, xtrends, yahoofinance, | 2026-02-08 |
 | manish-basargekar | 1.0.0 | 62 | CRITICAL | Instructs users to execute sudo commands (sudo xcodebuild -license accept) which | 2026-02-08 |
