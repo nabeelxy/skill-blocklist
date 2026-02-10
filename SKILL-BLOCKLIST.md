@@ -1,13 +1,13 @@
 # Agent Skills Blocklist
 
-**Last Updated:** 2026-02-10
-**Total Blocked Skills:** 97
-**Total Suspicious Skills:** 154
-**Malicious Skills (in Blocked):** 23
-**Critical Risk Skills:** 74
-**Total Malicious Skills (All):** 31
-**Total Skills Scanned:** 2,465
-**Source:** OpenClaw Skills Repository Security Analysis
+**Last Updated:** 2026-02-10 
+**Total Blocked Skills:** 97 
+**Total Suspicious Skills:** 154 
+**Malicious Skills (in Blocked):** 23 
+**Critical Risk Skills:** 74 
+**Total Malicious Skills (All):** 31 
+**Total Skills Scanned:** 2,465 
+**Source:** OpenClaw Skills Repository Security Analysis 
 
 ## How to Use This Blocklist
 
