@@ -37,46 +37,107 @@ Integrate the blocklist into your agent:
 **Python Example:**
 ```python
 import requests
+import re
 
 BLOCKLIST_URL = "https://raw.githubusercontent.com/nabeelxy/skill-blocklist/main/SKILL-BLOCKLIST.md"
 
-def is_skill_blocked(skill_name):
-    """Check if a skill is in the blocklist."""
+def check_skill_security(skill_name):
+    """
+    Check skill security status.
+    Returns: ('blocked', severity) or ('suspicious', severity) or ('safe', None)
+    """
     response = requests.get(BLOCKLIST_URL)
-    return skill_name.lower() in response.text.lower()
+    blocklist_content = response.text
+
+    # Parse table rows to find skill and its severity
+    pattern = rf'\|\s*{re.escape(skill_name)}\s*\|[^|]*\|\s*(MALICIOUS|CRITICAL|SUSPICIOUS)\s*\|'
+    match = re.search(pattern, blocklist_content, re.IGNORECASE)
+
+    if match:
+        severity = match.group(1).upper()
+        if severity in ['MALICIOUS', 'CRITICAL']:
+            return ('blocked', severity)
+        elif severity == 'SUSPICIOUS':
+            return ('suspicious', severity)
+
+    return ('safe', None)
 
 # Before skill installation
 skill_to_install = "example-skill"
-if is_skill_blocked(skill_to_install):
-    print(f"BLOCKED: {skill_to_install} is known to be malicious or high-risk")
+status, severity = check_skill_security(skill_to_install)
+
+if status == 'blocked':
+    print(f"BLOCKED: {skill_to_install} is {severity} - installation prevented")
     exit(1)
+elif status == 'suspicious':
+    print(f"WARNING: {skill_to_install} is {severity} - proceed with caution")
+    # Optionally prompt user for consent
 ```
 
 **JavaScript Example:**
 ```javascript
 const BLOCKLIST_URL = "https://raw.githubusercontent.com/nabeelxy/skill-blocklist/main/SKILL-BLOCKLIST.md";
 
-async function isSkillBlocked(skillName) {
+async function checkSkillSecurity(skillName) {
   const response = await fetch(BLOCKLIST_URL);
-  const blocklist = await response.text();
-  return blocklist.toLowerCase().includes(skillName.toLowerCase());
+  const blocklistContent = await response.text();
+
+  const pattern = new RegExp(
+    `\\|\\s*${skillName.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\s*\\|[^|]*\\|\\s*(MALICIOUS|CRITICAL|SUSPICIOUS)\\s*\\|`,
+    'i'
+  );
+  const match = blocklistContent.match(pattern);
+
+  if (match) {
+    const severity = match[1].toUpperCase();
+    if (severity === 'MALICIOUS' || severity === 'CRITICAL') {
+      return { status: 'blocked', severity };
+    } else if (severity === 'SUSPICIOUS') {
+      return { status: 'suspicious', severity };
+    }
+  }
+
+  return { status: 'safe', severity: null };
+}
+
+// Usage
+const result = await checkSkillSecurity("example-skill");
+if (result.status === 'blocked') {
+  console.log(`BLOCKED: Installation prevented - ${result.severity}`);
+} else if (result.status === 'suspicious') {
+  console.log(`WARNING: Proceed with caution - ${result.severity}`);
 }
 ```
 
 ## Current Statistics
 
-**Last Scan:** 2026-02-08
+**Last Scan:** 2026-02-10
+**Scan Dates:** 2026-02-08 (initial), 2026-02-09 (update)
 
 | Metric | Count |
 |--------|-------|
-| Total Blocked Skills | 96 |
+| Total Blocked Skills | 97 |
+| Total Suspicious Skills | 154 |
 | Confirmed Malicious | 31 |
-| Critical Risk (51+) | 65 |
-| Skills Scanned | 2,405 |
+| Critical Risk (51+) | 66 |
+| Skills Scanned | 2,465 |
+
+### Recent Updates
+
+**2026-02-10 Update:**
+- Added two-tier protection system: BLOCKED (97) vs SUSPICIOUS (154)
+- BLOCKED skills prevent installation (MALICIOUS or CRITICAL severity)
+- SUSPICIOUS skills warn users before installation (score 40-50)
+
+**2026-02-09 Update:**
+- Scanned 60 additional skills from the repository
+- Added 1 new critical-risk skill: **nancyuahon** (score: 55)
+- Updated total from 2,405 to 2,465 scanned skills
+- All 31 malicious actors remain flagged (no new malicious skills found)
 
 ## Severity Levels
 
-### MALICIOUS (31 skills)
+### MALICIOUS (31 skills) - BLOCK INSTALLATION
 Confirmed active threats with:
 - Remote code execution
 - Credential theft and exfiltration
@@ -84,13 +145,21 @@ Confirmed active threats with:
 - Persistent backdoors
 - AI agent hijacking frameworks
 
-### CRITICAL (65 skills)
+### CRITICAL (66 skills) - BLOCK INSTALLATION
 High-risk vulnerabilities (score 51+) with:
 - Suspicious network communication
 - Code obfuscation patterns
 - Malicious dependency injection
 - Privilege escalation attempts
 - Persistence mechanisms
+
+### SUSPICIOUS (154 skills) - WARN USER
+Concerning security patterns (score 40-50) with:
+- External code execution without verification
+- Unsafe command handling
+- Credential storage in plaintext
+- Missing input validation
+- Third-party dependencies without verification
 
 ## File Format
 
@@ -246,4 +315,4 @@ This blocklist is made possible by:
 
 **Stay Safe. Block Malicious Skills. Protect Your AI Agent.**
 
-Last Updated: 2026-02-08
+Last Updated: 2026-02-10
