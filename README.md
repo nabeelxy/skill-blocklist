@@ -111,15 +111,15 @@ if (result.status === 'blocked') {
 
 ## Current Statistics
 
-**Last Scan:** 2026-02-10
+**Last Scan:** 2026-02-13
 
 | Metric | Count |
 |--------|-------|
-| Total Blocked Skills | 97 |
+| Total Blocked Skills | 101 |
 | Confirmed Malicious | 31 |
-| Critical Risk (51+) | 66 |
+| Critical Risk (51+) | 70 |
 | Total Suspicious Skills | 154 |
-| Skills Scanned | 2,770 |
+| Skills Scanned | 2,859 |
 
 ## Severity Levels
 
@@ -301,4 +301,4 @@ This blocklist is made possible by:
 
 **Stay Safe. Block Malicious Skills. Protect Your AI Agent.**
 
-Last Updated: 2026-02-10
+Last Updated: 2026-02-13
