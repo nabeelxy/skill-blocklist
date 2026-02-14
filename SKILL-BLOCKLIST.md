@@ -1,12 +1,12 @@
 # Agent Skills Blocklist
 
-**Last Updated:** 2026-02-10  
-**Total Blocked Skills:** 97  
-**Total Suspicious Skills:** 154  
-**Malicious Skills (in Blocked):** 23  
-**Critical Risk Skills:** 74  
-**Total Malicious Skills (All):** 31  
-**Total Skills Scanned:** 2,465  
+**Last Updated:** 2026-02-13
+**Total Blocked Skills:** 101
+**Total Suspicious Skills:** 154
+**Malicious Skills (in Blocked):** 23
+**Critical Risk Skills:** 78
+**Total Malicious Skills (All):** 31
+**Total Skills Scanned:** 2,859  
 **Source:** OpenClaw Skills Repository Security Analysis  
 
 ## How to Use This Blocklist
@@ -34,6 +34,10 @@ This blocklist provides two-tier protection for AI agent ecosystems:
 | lvy19811120-gif | 1.0.0 | 67 | MALICIOUS | CRITICAL: Base64-encoded remote code execution command that downloads and execut | 2026-02-08 |
 | pepe276 | 1.0.2 | 67 | MALICIOUS | AI Jailbreaking Framework: flip_attack.js implements documented bypass technique | 2026-02-08 |
 | sakaen736jih | 1.0.0 | 67 | MALICIOUS | CRITICAL: 40+ skills contain base64-encoded shell commands that download and exe | 2026-02-08 |
+| foodaka | 1.0.0 | 75 | CRITICAL | Requires user's PRIVATE_KEY environment variable which grants full control ov... | 2026-02-13 |
+| eyebots | 1.8.0 | 72 | CRITICAL | All user commands and data are sent to external API endpoint (http://93.186.2... | 2026-02-13 |
+| fluxmira-moltbot | 1.0.0 | 68 | CRITICAL | Requires bot wallet private key (BOT_WALLET_PRIVATE_KEY) which poses signific... | 2026-02-13 |
+| philippeh5 | 1.0.0 | 68 | CRITICAL | Uses hardcoded absolute file path (D:\Projets\ClaudBot\Jarvis_Dashboard\data.... | 2026-02-13 |
 | ttboy | 0.1.0 | 63 | MALICIOUS | CRITICAL: Three skills contain identical base64-encoded malicious payload that d | 2026-02-08 |
 | awaaate | 1.0.0 | 62 | CRITICAL | Installation script executes arbitrary remote code via curl pipe to bash from Gi | 2026-02-08 |
 | brunkstr | 1.0.1 | 62 | CRITICAL | Downloads and compiles code from external GitHub repository (https://github.com/ | 2026-02-08 |
