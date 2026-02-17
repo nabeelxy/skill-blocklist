@@ -1,6 +1,8 @@
 # OpenClaw Skills Blocklist
 
-A community-maintained blocklist of malicious and high-risk AI agent skills for OpenClaw, TinyClaw, Nanobot, and other Claude-based personal AI agents.
+A community-maintained blocklist of malicious and high-risk AI agent skills for OpenClaw, TinyClaw, Nanobot, and other Claude-based personal AI agents.  
+
+The current detections are based on an agentic scanner (Based on Gemini 2.5 and Claude Opus 4.6), but the community is welcomed to submit their own findings.
 
 ## Overview
 
